@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Properties;
 import mastodon4j.entity.AccessToken;
-import mastodon4j.entity.App;
+import mastodon4j.entity.Application;
 import mastodon4j.entity.ClientCredential;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,7 +43,7 @@ public class PropertiesGenerator {
             Mastodon mastodon = MastodonFactory.getInstance();
 
             // Generate client_id and client_secret
-            App app = new App();
+            Application app = new Application();
             app.setName(properties.getProperty("mastodon4j.clientName"));
             app.setWebsite(properties.getProperty("mastodon4j.website"));
             String redirectUris = properties.getProperty("mastodon4j.redirectUris");
