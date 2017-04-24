@@ -56,9 +56,9 @@ public class PropertiesGenerator {
             String emailAddress = properties.getProperty("mastodon4j.emailAddress");
             String password = properties.getProperty("mastodon4j.password");
             AccessToken accessToken = mastodon.oauth()
-                    .issueAccessToken(clientCredential.getClientId(), clientCredential.getClientSecret(), emailAddress, password);
+                    .issueAccessToken(clientCredential.getClientId(), clientCredential.getClientSecret(), emailAddress, password, scopes);
             LOGGER.info("access_token:\t{}", accessToken.getAccessToken());
-
+            LOGGER.info("scope:\t{}", accessToken.getScope());
             try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(properties.getProperty("mastodon4j.outputPath"), "mastodon4j.properties"),
                     Charset.forName("UTF-8"), StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)) {
                 writer.append("mastodon4j.uri=" + properties.getProperty("mastodon4j.uri"));
