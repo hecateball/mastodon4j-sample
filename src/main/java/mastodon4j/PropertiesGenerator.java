@@ -26,8 +26,8 @@ public class PropertiesGenerator {
 
     public static void main(String... args) throws Exception {
         URL location = PropertiesGenerator.class.getProtectionDomain().getCodeSource().getLocation();
-        Path input = Paths.get(location.getPath(), "user.properties");
-        Path temporary = Paths.get(location.getPath(), "mastodon4j.properties");
+        Path input = Paths.get(location.toURI()).resolve("user.properties");
+        Path temporary = Paths.get(location.toURI()).resolve("mastodon4j.properties");
         try (InputStream inputStream = Files.newInputStream(input, StandardOpenOption.READ);
                 OutputStream outputStream = Files.newOutputStream(temporary, StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);) {
             // Loading user.properties
